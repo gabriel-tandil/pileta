@@ -3,21 +3,21 @@
 */
 
 //definiciones de pines
-const int BOMBA_1 =  13;      // the number of the LED pin
+const int BOMBA_1 =  13;      // the number of the pump pin
 //intervalos
 const long intervaloBomba1 = 300000;        // interval para conmutar la bomba milisegundos (5 minutos)
-
 
 // Variables de estados
 int estadoBomba1 = HIGH;             // quiero que arranque encendida
 
-
 unsigned long previousMillisBomba1 = 0;    // ultimo milisegundos en que se cambio el estado
-
 
 void setup() {
   // set the digital pin as output:
   pinMode(BOMBA_1, OUTPUT);
+  
+  // pongo el estado, sino tengo que esperar todo el tiempo hasta la primera actualizacion efectiva
+  digitalWrite(BOMBA_1, estadoBomba1);
 }
 
 void loop() {
